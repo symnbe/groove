@@ -13,6 +13,9 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+import Swiper from 'swiper/swiper-bundle'
+
+
 
 
 Rails.start()
@@ -30,4 +33,14 @@ ActiveStorage.start()
       $(".openbtn").removeClass('active'); //ボタンの activeクラスを除去し
       $("#g-nav").removeClass('panelactive'); //ナビゲーションのpanelactiveクラスも除去
     });
+    
+    new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      speed: 1500,
+    });
+    
   });
