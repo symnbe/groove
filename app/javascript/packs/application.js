@@ -34,13 +34,19 @@ ActiveStorage.start()
       $("#g-nav").removeClass('panelactive'); //ナビゲーションのpanelactiveクラスも除去
     });
     
-    new Swiper('.swiper', {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false
-      },
-      speed: 1500,
-    });
+    var swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    speed: 1500,
+    // 新たなオプションを追加
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+
     
   });
