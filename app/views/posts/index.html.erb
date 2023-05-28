@@ -5,8 +5,8 @@
         <div class="col-4">
           <div class="card">
             <div class="card-body text-center">
-              <h5 class="card-title text-center"><%= info.title %></h5>
-              <p class="card-text"><%= info.url %></p>
+              <h5 class="card-title text-center"><%= info.title.slice(0...10) %> ...</h5>
+              <p class="card-text"><%= info.url.slice(0...10) %> ...</p>
             </div>
           </div>
         </div>
