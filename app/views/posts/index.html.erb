@@ -1,15 +1,15 @@
 <div class="container">
-  <h1 class="text-center mt-5">Trend</h1>
-      <% @posts.each do |info| %>
-        <div class="row mx-auto d-flex justify-content-center mt-5">
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"><%= info.title %></h5>
-                <p class="card-text">%= info.url %></p>
-              </div>
+  <h2 class="text-center mt-5">Trend</h2>
+  <div class="row mx-auto d-flex justify-content-center mt-5">
+    <% @posts.each do |info| %>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title text-center"><%= info.title %></h5>
+              <p class="card-text"><%= info.url %></p>
             </div>
           </div>
         </div>
-      <% end %>
+    <% end %>
+  </div>
 </div>
