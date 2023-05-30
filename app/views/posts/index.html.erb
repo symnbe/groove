@@ -6,7 +6,7 @@
           <div class="card">
             <div class="card-body text-center">
               <% if current_user.id == info.user.id %>
-                <%= link_to "#", class: "edit-link d-flex justify-content-end", 'data-post-id': info.id do %>
+                <%= link_to edit_post_path(info), class: "d-flex justify-content-end" do %>
                   <i class="fas fa-cog"></i>
                 <% end %>
               <% end %>
@@ -34,17 +34,8 @@
   </div>
 </div>
 
-<div id="edit-modal" class="modal">
-  <div class="modal-content">
-    <%= render 'posts/edit' %>
-  </div>
-</div>
-
 <script>
   const ellipsisTexts = document.querySelectorAll('.ellipsis-text');
-  const editLinks = document.querySelectorAll('.edit-link');
-  const modal = document.getElementById('edit-modal');
-  const modalContent = modal.querySelector('.modal-content');
 
   ellipsisTexts.forEach((element) => {
     const fullText = element.getAttribute('data-full-text');
@@ -62,17 +53,5 @@
         }
       });
     }
-  });
-
-  editLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const postId = link.getAttribute('data-post-id');
-
-      // ポップアップの内容をAjaxで取得して表示するなどの処理を行うことができます
-      // 以下は単純な例として、ポップアップの内容を表示しています
-      modalContent.textContent = `Edit Post ${postId}`;
-      modal.style.display = 'block';
-    });
   });
 </script>
