@@ -6,7 +6,7 @@
           <div class="card">
             <div class="card-body text-center">
               <% if current_user.id == info.user.id %>
-                <%= link_to edit_post_path(info), target: "_blank", class: "d-flex justify-content-end" do %>
+                <%= link_to edit_post_path(info), class: "d-flex justify-content-end" do %>
                   <i class="fas fa-cog"></i>
                 <% end %>
               <% end %>
