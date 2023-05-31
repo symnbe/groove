@@ -5,11 +5,16 @@
         <div class="col-12 col-md-6 mt-3">
           <div class="card">
             <div class="card-body text-center">
-              <% if current_user.id == info.user.id %>
-                <%= link_to edit_post_path(info), class: "d-flex justify-content-end" do %>
-                  <i class="fas fa-cog"></i>
+              <div class="d-flex justify-content-end">
+                <% if current_user.id == info.user.id %>
+                 <%= link_to post_path(info), method: :delete, class: "mr-2" do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                  <%= link_to edit_post_path(info) do %>
+                    <i class="fas fa-cog"></i>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
               <h5 class="card-title text-center">
                 <% if info.title.length > 13 %>
                   <%= info.title.slice(0,13) %> ...
