@@ -17,13 +17,13 @@
     <!--タブで選択された要素部分-->
     <div class="tabbox-contents">
       <div class="tabbox box-show">
-        <%= render 'posts/list', posts: @new_posts %>    
+        <%= render 'posts/general', posts: @all %>    
       </div>
       <div class="tabbox">
-        <%= render 'posts/list', posts: @popular_posts %>
+        <%= render 'posts/work', posts: @works %>
       </div>
       <div class="tabbox">
-        <%= render 'posts/list', posts: @pick_up_posts %>
+        <%= render 'posts/hobby', posts: @hobbies %>
       </div>
     </div>
 

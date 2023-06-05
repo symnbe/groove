@@ -1,0 +1,5 @@
+<% all.each do |post| %>
+  <%= post_path(post.id) %>
+  <p>URL：<%= post.url %></p>
+  <p>ユーザー名：<%= post.user.name %></p>
+<% end %>
