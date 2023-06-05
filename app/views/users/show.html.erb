@@ -1,9 +1,8 @@
 <div class="conrtainer">
-  <h2 class="text-center"><%= @user.name %></h2>
-  <div class="row">
+  <h2 class="text-center mt-5"><%= @user.name %></h2>
     <div>
       <!--タブ部分-->
-      <ul class="tab-list">
+      <ul class="col-8 tab-list list-unstyled mx-auto d-flex justify-content-center mt-5">
         <li class="tab tab-active">
           all
         </li>
@@ -17,7 +16,7 @@
       <!--タブで選択された要素部分-->
       <div class="tabbox-contents">
         <div class="tabbox box-show">
-          <%= render 'posts/index', posts: @posts %>    
+          <%= render 'posts/index', posts: @posts %>
         </div>
         <div class="tabbox">
           <%= render 'posts/index', posts: @posts %>
@@ -27,7 +26,6 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 <script>
