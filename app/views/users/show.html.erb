@@ -1,51 +1,47 @@
 <div class="conrtainer">
   <h2 class="text-center mt-5"><%= @user.name %></h2>
-    <div>
-      <!--タブ部分-->
-      <ul class="col-9 tab-list list-unstyled mx-auto d-flex justify-content-center mt-5">
-        <li class="tab tab-active">
-          all
-        </li>
-        <li class="tab">
-          Work
-        </li>
-        <li class="tab">
-          Hobby
-        </li>
+    <div class="col-12 mt-5">
+      <ul class="tabs mx-auto d-flex justify-content-center">
+        <li class="tab-link current" data-tab="tab-1">All</li>
+        <li class="tab-link" data-tab="tab-2">work</li>
+        <li class="tab-link" data-tab="tab-3">Hobby</li>
       </ul>
-      <!--タブで選択された要素部分-->
-      <div class="tabbox-contents mx-auto d-flex justify-content-center">
-        <div class="col-9 tabbox box-show d-flex justify-content-center">
-          <%= render 'posts/tab', posts: @posts %>
-        </div>
-        <div class="tabbox">
-          <%= render 'posts/tab', posts: @posts %>
-        </div>
-        <div class="tabbox">
-          <%= render 'posts/tab', posts: @posts %>
-        </div>
+      
+      <div id="tab-1" class="tab-content current mx-auto d-flex justify-content-center">
+        <%= render "posts/tab", posts: @posts %>
+      </div>
+      
+      <div id="tab-2" class="tab-content">
+        <%= render "posts/tab", posts: @posts %>
+      </div>
+      
+      <div id="tab-3" class="tab-content">
+        <%= render "posts/tab", posts: @posts %>
       </div>
     </div>
 </div>
 
 <script>
-  // turbolinksの無効化
-$(document).on('turbolinks:load', function() {
-  $(function() {
-    // .tabがクリックされたときを指定
-    $('.tab').click(function(){
-      // 今ある.tab-activeを削除
-      $('.tab-active').removeClass('tab-active');
-      // クリックされた.tabに.tab-activeを追加
-      $(this).addClass('tab-active');
-      // 今ある.box-showを削除
-      $('.box-show').removeClass('box-show');
-      // indexに.tabのindex番号を代入
-      const index = $(this).index();
-      // .tabboxとindexの番号が同じ要素に.box-showを追加
-      $('.tabbox').eq(index).addClass('box-show');
+  document.addEventListener("DOMContentLoaded", function() {
+    var tabLinks = document.querySelectorAll(".tab-link");
+    
+    tabLinks.forEach(function(link) {
+      link.addEventListener("click", function(event) {
+        var tabName = this.dataset.tab;
+        var tabContent = document.getElementById(tabName);
+        
+        // タブの切り替え
+        document.querySelectorAll(".tab-link").forEach(function(link) {
+          link.classList.remove("current");
+        });
+        this.classList.add("current");
+        
+        // コンテンツの切り替え
+        document.querySelectorAll(".tab-content").forEach(function(content) {
+          content.classList.remove("current");
+        });
+        tabContent.classList.add("current");
+      });
     });
   });
-});
-
 </script>

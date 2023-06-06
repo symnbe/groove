@@ -156,33 +156,28 @@ body{
 }
 
 // タブ切り替え
-.tab {
-  width: 100%;
-  padding: 10px;
+/* tabs.css */
+
+.tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs li {
+  display: inline-block;
+  padding: 10px 15px;
   cursor: pointer;
-  border-left: solid 1px #CCC;
-  border-bottom: solid 1px #CCC;
 }
-.tab:first-child {
-  border-left: none;
+
+.tabs li.current {
+  background-color: #ccc;
 }
-// タブがactiveのときのデザイン
-.tab-active {
-  color: #FFF;
-  background: #19b5d1;
-  transition: all 0.2s ease-in-out;
-}
-// タブの中身、最初は非表示
-.tabbox {
+
+.tab-content {
   display: none;
-  padding: 15px;
 }
-// box-showクラスのものだけ表示
-.box-show {
+
+.tab-content.current {
   display: block;
-}
-// hover時のアクション
-.tab:hover{
-  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
-  transform: translateY(-1px);
 }
