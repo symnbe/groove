@@ -12,6 +12,20 @@ body{
   background-color: #012738;
 }
 
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+.wrapper{
+  width: 100%;
+  max-width: 960px;
+  margin: 30px auto;
+}
+
 /*========= ナビゲーションのためのCSS ===============*/
 
 #g-nav{
@@ -197,4 +211,9 @@ body{
 	to {
 		opacity: 1;
 	}
+}
+
+.area li{
+  padding: 10px; 
+  border-bottom: 1px solid #ddd;
 }
