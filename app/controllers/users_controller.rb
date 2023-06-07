@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   @all_posts = @user.posts
   @work_posts = @all_posts.where(category: "work")
   @hobby_posts = @all_posts.where(category: "hobby")
-end
+  end
 
   def edit
   end

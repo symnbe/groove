@@ -1,47 +1,53 @@
-<div class="conrtainer">
-  <h2 class="text-center mt-5"><%= @user.name %></h2>
-    <div class="col-12 mt-5">
-      <ul class="tabs mx-auto d-flex justify-content-center">
-        <li class="tab-link current" data-tab="tab-1">All</li>
-        <li class="tab-link" data-tab="tab-2">work</li>
-        <li class="tab-link" data-tab="tab-3">Hobby</li>
-      </ul>
-      
-      <div id="tab-1" class="tab-content current mx-auto d-flex justify-content-center">
-        <%= render "posts/tab", posts: @all_posts %>
-      </div>
-      
-      <div id="tab-2" class="tab-content">
-        <%= render "posts/tab", posts: @work_posts %>
-      </div>
-      
-      <div id="tab-3" class="tab-content">
-        <%= render "posts/tab", posts: @hobby_posts %>
-      </div>
-    </div>
+<div class="wrapper">
+  <ul class="tab">
+    <li><a href="#all">All</a></li>
+    <li><a href="#work">WORK</a></li>
+    <li><a href="#hobby">HOBBY</a></li>
+  </ul>
+
+  <div id="all" class="area">
+    <%= render "posts/tab", posts: @all_posts %>
+  </div>
+  <div id="work" class="area">
+    <%= render "posts/tab", posts: @work_posts %>
+  </div>
+  <div id="hobby" class="area">
+    <%= render "posts/tab", posts: @hobby_posts %>
+  </div>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var tabLinks = document.querySelectorAll(".tab-link");
-    
-    tabLinks.forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var tabName = this.dataset.tab;
-        var tabContent = document.getElementById(tabName);
-        
-        // タブの切り替え
-        document.querySelectorAll(".tab-link").forEach(function(link) {
-          link.classList.remove("current");
-        });
-        this.classList.add("current");
-        
-        // コンテンツの切り替え
-        document.querySelectorAll(".tab-content").forEach(function(content) {
-          content.classList.remove("current");
-        });
-        tabContent.classList.add("current");
-      });
-    });
-  });
+ function GethashID (hashIDName){
+	if(hashIDName){
+		//タブ設定
+		$('.tab li').find('a').each(function() { //タブ内のaタグ全てを取得
+			var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得	
+			if(idName == hashIDName){ //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
+				var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
+				$('.tab li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
+				$(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
+				//表示させるエリア設定
+				$(".area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
+				$(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加	
+			}
+		});
+	}
+}
+
+//タブをクリックしたら
+$('.tab a').on('click', function() {
+	var idName = $(this).attr('href'); //タブ内のリンク名を取得	
+	GethashID (idName);//設定したタブの読み込みと
+	return false;//aタグを無効にする
+});
+
+
+// 上記の動きをページが読み込まれたらすぐに動かす
+$(window).on('load', function () {
+    $('.tab li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
+    $('.area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
+	var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
+	GethashID (hashName);//設定したタブの読み込み
+});
+
 </script>
