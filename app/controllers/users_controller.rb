@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts
-    @work_posts = @posts.where(category: "work")
-    @Hobby_posts = @posts.where(category: "hobby")
-    
-  end
+  @user = User.find(params[:id])
+  @all_posts = @user.posts
+  @work_posts = @all_posts.where(category: "work")
+  @hobby_posts = @all_posts.where(category: "hobby")
+end
 
   def edit
   end
