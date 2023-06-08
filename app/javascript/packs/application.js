@@ -47,6 +47,26 @@ ActiveStorage.start()
       prevEl: '.swiper-button-prev',
     },
   });
+  
+  const ellipsisTexts = document.querySelectorAll('.ellipsis-text');
+
+  ellipsisTexts.forEach((element) => {
+    const fullText = element.getAttribute('data-full-text');
+    const maxLength = 31;
+
+    if (fullText.length > maxLength) {
+      const truncatedText = fullText.slice(0, maxLength) + '...';
+      element.textContent = truncatedText;
+
+      element.addEventListener('click', () => {
+        if (element.textContent === truncatedText) {
+          element.textContent = fullText;
+        } else {
+          element.textContent = truncatedText;
+        }
+      });
+    }
+  });
 
     
   });
