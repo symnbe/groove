@@ -1,6 +1,6 @@
 <h2 class="text-center mt-5"><%= @user.name %></h2>
 <div class="wrapper mt-5">
-  <ul class="tab">
+  <ul class="col-12 tab">
     <li><a href="#all">All</a></li>
     <li><a href="#work">WORK</a></li>
     <li><a href="#hobby">HOBBY</a></li>
@@ -28,14 +28,14 @@
 	if(hashIDName){
 		//タブ設定
 		$('.tab li').find('a').each(function() { //タブ内のaタグ全てを取得
-			var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得	
+			var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得
 			if(idName == hashIDName){ //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
 				var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
 				$('.tab li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
 				$(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
 				//表示させるエリア設定
 				$(".area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
-				$(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加	
+				$(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加
 			}
 		});
 	}
@@ -43,7 +43,7 @@
 
 //タブをクリックしたら
 $('.tab a').on('click', function() {
-	var idName = $(this).attr('href'); //タブ内のリンク名を取得	
+	var idName = $(this).attr('href'); //タブ内のリンク名を取得
 	GethashID (idName);//設定したタブの読み込みと
 	return false;//aタグを無効にする
 });
