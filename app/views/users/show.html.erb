@@ -1,4 +1,11 @@
-<h2 class="text-center mt-5"><%= @user.name %></h2>
+<div class="col-12 ">
+	<h2 class="text-center mt-5"><%= @user.name %>
+		<%= link_to edit_user_path, class: "btn btn-outline-secondary  ml-5" do %>
+			<i class="fas fa-user-circle"></i>
+		<% end %>
+	</h2>
+</div>
+
 <div class="wrapper mt-5">
   <ul class="col-12 tab">
     <li><a href="#all">All</a></li>
